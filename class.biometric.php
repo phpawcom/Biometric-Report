@@ -67,8 +67,4 @@ class biometric {
 		return array(date($this->$dateFormat[0], strtotime($dateRange[0])), date($this->$dateFormat[1], strtotime($dateRange[1])));
 	}
 }
-error_reporting(E_ALL & ~E_STRICT & ~E_NOTICE);
-$biometric = new biometric('C:/Inetpub/vhosts/demo.phpaw.xyz/mdb/dbTimeManager.demo.mdb', '', '');
-echo '<pre>'.print_r($biometric->readUserData('Badgenumber', 131)->getDaysList(), true).'</pre>';
-echo '<h3>Total: '.$biometric->readUserData('Badgenumber', 131)->getTotalHours(0).' </h3>';
 ?>
