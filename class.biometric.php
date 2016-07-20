@@ -1,10 +1,4 @@
 <?php
-/********************************************************************************
-*                         Fingerprint device Report, version 1                  *
-*        Applicable for IN01 A Biometric Access Control Terminal, ZKSOFTWARE    *
-*                             Written By Abdulaziz Al Rashdi                    *
-*                   http://www.alrashdi.co  |  https://github.com/phpawcom      *
-*********************************************************************************/
 class biometric {
 	public $dateFormat = 'm/d/Y';
 	private $adb;
@@ -24,6 +18,7 @@ class biometric {
 	}
 	public function readUserData($selector, $userid, array $dateRange = array()){
 		if(is_object($this->adb)){
+			$this->userRecords = array();
 			$calc = array();
 			$dateRange = count($dateRange) == 2? $this->formatDate($dateRange) : array();
 			try {
@@ -64,7 +59,7 @@ class biometric {
 		return $decimal > 0? round($this->totalHours, $decimal) : $this->totalHours;
 	}
 	public function formatDate(array $dateRange){
-		return array(date($this->$dateFormat[0], strtotime($dateRange[0])), date($this->$dateFormat[1], strtotime($dateRange[1])));
+		return array(date($this->dateFormat, strtotime($dateRange[0])), date($this->dateFormat, strtotime($dateRange[1]) + 86400));
 	}
 }
 ?>
