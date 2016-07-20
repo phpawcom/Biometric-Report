@@ -9,6 +9,7 @@ This is very basic class to read from "IN01 A Biometric Access Control Terminal"
 ##### Example:
 ```
 error_reporting(E_ALL & ~E_STRICT & ~E_NOTICE); ## To make sure to see errors if occur
+include('class.biometric.php');
 $biometric = new biometric('C:/Inetpub/vhosts/testdomain.com/mdb/dbTimeManager.demo.mdb', 'username', 'password');
 echo '<pre>'.print_r($biometric->readUserData('Badgenumber', 131)->getDaysList(), true).'</pre>'; ## Get records per day, all records since started
 echo '<pre>'.print_r($biometric->readUserData('Badgenumber', 131, array('2016-06-20', '2016-06-23'))->getDaysList(), true).'</pre>'; ## Get records per day, records for specific period
